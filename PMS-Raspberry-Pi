@@ -1,15 +1,27 @@
 #!/bin/bash
 
+echo "\e[31mUpdating ...\e[39m"
 apt-get update
+echo "\e[32mUpdated !\e[39m"
+echo "\e[31mUpgrading ...\e[39m"
 apt-get upgrade -y
+echo "\e[32mUpgraded !\e[39m"
 
+echo "\e[31mInstalling apt-transport-https ...\e[39m"
 sudo apt-get install apt-transport-https -y
+echo "\e[32mInstalled apt-transport-https !\e[39m"
 
+echo "\e[31mAdding PGP Key ...\e[39m"
 curl https://downloads.plex.tv/plex-keys/PlexSign.key | apt-key add -
 echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+echo "\e[32mAdded !\e[39m"
 
+echo "\e[31mUpdating ...\e[39m"
 sudo apt-get update
+echo "\e[32mUpdated !\e[39m"
 
+echo "\e[31mInstalling PMS Server ...\e[39m"
 sudo apt install plexmediaserver
+echo "\e[32mInstalled PMS Server !\e[39m"
 
-echo "You can connect to your PMS on $(hostname -I):32400 ."
+echo "\e[32m\e[1mYou can connect to your PMS on $(hostname -I):32400 .\e[39m\e[21m"
