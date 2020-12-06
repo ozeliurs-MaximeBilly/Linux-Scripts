@@ -1,0 +1,15 @@
+#!/bin/bash
+
+apt-get update
+apt-get upgrade -y
+
+sudo apt-get install apt-transport-https -y
+
+curl https://downloads.plex.tv/plex-keys/PlexSign.key | apt-key add -
+echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+
+sudo apt-get update
+
+sudo apt install plexmediaserver
+
+echo "You can connect to your PMS on $(hostname -I):32400 ."
