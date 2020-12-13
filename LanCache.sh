@@ -28,4 +28,4 @@ echo "Done !"
 
 echo "To finish you have to configure the lancache by running 'sudo nano .env' and 'sudo docker-compose up -d' and fine tuning the parameters for your liking !!!"
 
-
+(crontab -l 2>/dev/null; echo "0 4 * * * $USER cd /home/$USER/lancache && sudo docker-compose restart") | crontab -
