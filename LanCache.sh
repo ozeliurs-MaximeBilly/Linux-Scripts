@@ -26,6 +26,6 @@ git clone https://github.com/lancachenet/docker-compose /home/$USER/lancache
 cd /home/$USER/lancache
 echo "Done !"
 
-echo "To finish you have to configure the lancache by running 'nano .env' and ' docker-compose up -d' and fine tuning the parameters for your liking !!!"
+echo "To finish you have to configure the lancache by running 'sudo nano .env' and 'sudo docker-compose up -d' and fine tuning the parameters for your liking !!!"
 
 
