@@ -16,7 +16,7 @@ sudo sh get-docker.sh
 rm /home/$USER/get-docker.sh
 echo "Done !"
 
-sudo apt-get install docker-compose
+sudo apt-get install docker-compose -y
 
 sudo apt-get install git
 
