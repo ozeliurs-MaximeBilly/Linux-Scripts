@@ -16,12 +16,15 @@ sudo sh get-docker.sh
 rm /home/$USER/get-docker.sh
 echo "Done !"
 
+echo "Installing docker-compose && git"
 sudo apt-get install docker-compose -y
+sudo apt-get install git -y
+echo "Done !"
 
-sudo apt-get install git
-
+echo "Cloning the Lancache project on github ..."
 git clone https://github.com/lancachenet/docker-compose /home/$USER/lancache
 cd /home/$USER/lancache
+echo "Done !"
 
 echo "To finish you have to configure the lancache by running 'nano .env' and ' docker-compose up -d' and fine tuning the parameters for your liking !!!"
 
