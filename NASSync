@@ -1,0 +1,13 @@
+#!/bin/bash
+
+HOST='10.0.0.70'
+USER='master'
+PASS='myuser'
+TARGETFOLDER='/home/$USER/Documents/Jellyfin-Library/My\ Movies'
+SOURCEFOLDER='/Volume_2/My\ Movies'
+
+lftp -f "
+open $HOST
+user $USER $PASS
+lcd $SOURCEFOLDER
+mirror --delete --verbose $SOURCEFOLDER $TARGETFOLDER "
