@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Is curlftps installed ?"
-sudo apt-get install curlftps -y
+sudo apt-get install curlftpfs -y
 echo "Done !"
 
 echo "Mounting FTP to /mnt/ftp"
