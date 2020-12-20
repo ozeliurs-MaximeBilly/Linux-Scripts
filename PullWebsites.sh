@@ -12,7 +12,7 @@ cd /home/ubuntu/
 echo -e "\u001b[33mCleaning up previous pull ...\u001b[0m"
 rm /home/ubuntu/websites -r
 echo "\u001b[33mPulling ...\u001b[0m"
-git clone https://github.com/Oseliurs/html.git
+git clone https://github.com/Oseliurs/websites.git
 echo -e "\u001b[32mWebsite Cloned !!\u001b[0m"
 
 echo -e "\u001b[33mUpdating Contents ...\u001b[0m"
