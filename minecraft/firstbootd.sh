@@ -4,7 +4,7 @@
 
 echo "Démarrage de tous les serveurs ..."
 
-for SERV in `ls ~/minecraft/$.mc`
+for SERV in `ls ~/minecraft/*.mc`
 do
   echo "Démarrage"
   screen -S "$SERV" -d -m 
