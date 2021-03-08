@@ -8,6 +8,6 @@ script_path="$(dirname $(readlink -f $0))/"
 cd $script_path
 
 # You can alter this : This is the normal code for minecraft java edition
-java -Xmx1G -Xms1GM -jar server.jar nogui
+java -Xmx1G -Xms1G -jar server.jar nogui
 
 echo "Minecraft Server Launched !"
