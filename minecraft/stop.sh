@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Description : "Restart deamon"
+# Description : "Stop deamon"
 
 if [ "$#" = 0 ];
 then
