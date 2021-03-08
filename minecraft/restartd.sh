@@ -9,7 +9,6 @@ then
 		for SERV in `ls ~/minecraft/ | grep ".mc"`
 		do
 		  echo "Arret de $SERV."
-		  screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
 		  screen -R "$SERV" -X stuff "stop $(printf "\r")"
 		done
 
@@ -32,7 +31,6 @@ else
 		for SERV in "$@"
 		do
 		  echo "Arret de $SERV."
-		  screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
 		  screen -R "$SERV" -X stuff "stop $(printf "\r")"
 		done
 
