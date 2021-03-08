@@ -6,7 +6,7 @@ if [ "$#" = 0 ];
 then
 	echo "Redemarrage de tous les serveurs ..."
 
-		for SERV in `ls ~/minecraft/*.mc`
+		for SERV in `ls ~/minecraft/ | grep ".mc"`
 		do
 		  echo "Arret de $SERV."
 		  screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
@@ -15,7 +15,7 @@ then
 
 		sleep 30s
 
-		for SERV in `ls ~/minecraft/*.mc`
+		for SERV in `ls ~/minecraft/ | grep ".mc"`
 		do
 		  echo "Démarrage de $SERV."
 		  screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
