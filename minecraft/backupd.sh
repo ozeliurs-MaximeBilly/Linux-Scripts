@@ -62,7 +62,7 @@ else
 		screen -R "$SERV" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
 	done
 
-	sleep 120s
+	#sleep 120s #POUR LE DEV A ENLEVER APRES
 
 	for SERV in "$@"
 	do
@@ -83,7 +83,8 @@ else
     	else
     		mkdir $backup_path/$SERV
     	fi
-
+	
+	echo "backup de - $server_path/$SERV - sur - $backup_path/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz - ."
     	tar -cvpzf "$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "$backup/minecraft/$SERV"
     done
 
