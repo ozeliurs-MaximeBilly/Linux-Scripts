@@ -5,7 +5,7 @@
 #define backup folder
 script_path="$(dirname $(readlink -f $0))/"
 backup_path="$script_path../backup" # ici /root/minecraft/scripts/../backup
-server_path="$script_path.."
+server_path="$script_path.." # ici /root/minecraft/scripts/..
 
 
 if [ "$#" = 0 ];
@@ -85,7 +85,7 @@ else
     	fi
 	
 	echo "backup de - $server_path/$SERV - sur - $backup_path/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz - ."
-    	tar -cvpzf "$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "$backup/minecraft/$SERV"
+    	echo 'tar -cvpzf "$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "$backup/minecraft/$SERV" '
     done
 
     sleep 30s
