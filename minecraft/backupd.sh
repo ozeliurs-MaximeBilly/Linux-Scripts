@@ -2,6 +2,11 @@
 
 # Description : "Backup deamon"
 
+#define backup folder
+script_path="$(dirname $(readlink -f $0))/"
+backup=$script_path+"/../backup/"
+
+
 if [ "$#" = 0 ];
 then
 	echo "Backup de tous les serveurs ..."
@@ -34,7 +39,7 @@ then
     		mkdir ~/backup/$SERV
     	fi
 
-    	tar -cvpzf "~/backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "~/minecraft/$SERV"
+    	tar -cvpzf "$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "~/minecraft/$SERV"
     done
 
     sleep 30s
@@ -78,7 +83,7 @@ else
     		mkdir ~/backup/$SERV
     	fi
 
-    	tar -cvpzf "~/backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "~/minecraft/$SERV"
+    	tar -cvpzf "$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "~/minecraft/$SERV"
     done
 
     sleep 30s
