@@ -9,7 +9,7 @@ then
 	echo "Prevention des joueurs ..."
 	for SERV in `ls ~/minecraft/ | grep ".mc"`
 	do
-		screen -R Minecraft\ server -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
+		screen -R "$SERV" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
 	done
 
 	sleep 120s
@@ -53,7 +53,7 @@ else
 	echo "Prevention des joueurs ..."
 	for SERV in "$@"
 	do
-		screen -R Minecraft\ server -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
+		screen -R "$SERV" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
 	done
 
 	sleep 120s
