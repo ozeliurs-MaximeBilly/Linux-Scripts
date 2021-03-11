@@ -4,7 +4,7 @@
 
 #define backup folder
 script_path="$(dirname $(readlink -f $0))/"
-backup="$script_path+../backup/"
+backup="$script_path../backup/"
 
 
 if [ "$#" = 0 ];
