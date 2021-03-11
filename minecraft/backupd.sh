@@ -91,6 +91,5 @@ else
     done
 
     echo "Serveurs en cours de démarrage ..."
-    
-	done
+
 fi
