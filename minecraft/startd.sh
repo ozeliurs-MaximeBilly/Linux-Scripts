@@ -18,8 +18,6 @@ then
 else
 	for SERV in "$@"
 	do
-		echo "Démarrage de $@."
-
 		for SERV in "$@"
 		do
 		  echo "Démarrage de $SERV."
