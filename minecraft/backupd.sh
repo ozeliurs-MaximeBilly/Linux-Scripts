@@ -45,7 +45,7 @@ then
 	dest="$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
 	
 	echo "backup de ($src) sur ($dest)."
-    	tar -cvpzf $dest $src
+    	tar -cvpzf "$dest" "$src"
     	done
 
     	sleep 30s
