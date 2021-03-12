@@ -91,8 +91,8 @@ else
     		mkdir $backup_path/$SERV
     	fi
 	
-	src = "$server_path/$SERV"
-	dest = "$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
+	src="$server_path/$SERV"
+	dest="$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
 	
 	echo "backup de ($src) sur ($dest)."
     	tar -cvpzf "$dest" "$src"
