@@ -4,8 +4,8 @@
 
 #define backup folder
 script_path="$(dirname $(readlink -f $0))/"
-backup_path="$(script_path)../backup" # ici /root/minecraft/scripts/../backup
-server_path="$(script_path).." # ici /root/minecraft/scripts/..
+backup_path="$script_path../backup" # ici /root/minecraft/scripts/../backup
+server_path="$script_path.." # ici /root/minecraft/scripts/..
 
 
 if [ "$#" = 0 ];
