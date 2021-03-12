@@ -10,15 +10,16 @@ server_path="$script_path.." # ici /root/minecraft/scripts/..
 
 if [ "$#" = 0 ];
 then
+	## PARTIE PAS D'ARGUMENTS. LE BACKUP S'EFFECTUE SUR TOUS LES SERVEURS
 	echo "Backup de tous les serveurs ..."
 
-	echo "Prevention des joueurs ..."
 	for SERV in `ls $server_path | grep ".mc"`
 	do
+		echo "Prevention des joueurs sur $SERV ..."
 		screen -R "$SERV" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
 	done
 
-	#sleep 120s #POUR LE DEV A ENLEVER APRES
+	sleep 120s
 
 	for SERV in `ls $server_path | grep ".mc"`
 	do
@@ -37,10 +38,14 @@ then
 		then
     		echo "Directory exists."
     	else
-    		mkdir $backup_path/$SERV
+    		echo "$backup_path/$SERV doesent exist. Creating it ..."
+		mkdir $backup_path/$SERV
     	fi
-	echo "backup de - $server_path/$SERV - sur - $backup_path/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz - ."
-    	tar -cvpzf "$backup_path/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "$server_path/$SERV"
+	src = $server_path/$SERV
+	dest = "$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
+	
+	echo "backup de ($src) sur ($dest)."
+    	tar -cvpzf $dest $src
     done
 
     sleep 30s
@@ -55,14 +60,14 @@ then
     echo "Serveurs en cours de démarrage ..."
 
 else
-
-	echo "Prevention des joueurs ..."
+	#PARTIE ARGUMENTS. DANS CETTE PARTIE LE BACKUP S4EFFECTUE SEULEMENT SUR LES SERVEURS SPECIFIES
 	for SERV in "$@"
 	do
+		echo "Prevention des joueurs sur $SERV ..."
 		screen -R "$SERV" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
 	done
 
-	#sleep 120s #POUR LE DEV A ENLEVER APRES
+	sleep 120s
 
 	for SERV in "$@"
 	do
@@ -71,7 +76,8 @@ else
 		sleep 2s
 		screen -R "$SERV" -X stuff "stop $(printf "\r")"
 	done
-
+	
+	echo "On attends que les serveurs d'eteignent."
 	sleep 30s
 
 	for SERV in "$@"
@@ -81,11 +87,15 @@ else
 		then
     		echo "Directory exists."
     	else
+		echo "$backup_path/$SERV doesent exist. Creating it ..."
     		mkdir $backup_path/$SERV
     	fi
 	
-	echo "backup de - $server_path/$SERV - sur - $backup_path/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz - ."
-    	echo 'tar -cvpzf "$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz" "$backup/minecraft/$SERV" '
+	src = $server_path/$SERV
+	dest = "$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
+	
+	echo "backup de ($src) sur ($dest)."
+    	tar -cvpzf $dest $src
     done
 
     sleep 30s
