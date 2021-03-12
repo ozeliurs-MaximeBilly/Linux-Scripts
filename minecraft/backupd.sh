@@ -63,18 +63,18 @@ else
 	#PARTIE ARGUMENTS. DANS CETTE PARTIE LE BACKUP S4EFFECTUE SEULEMENT SUR LES SERVEURS SPECIFIES
 	for SERV in "$@"
 	do
-		echo "Prevention des joueurs sur $(SERV) ..."
-		screen -R "$(SERV)" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
+		echo "Prevention des joueurs sur $SERV ..."
+		screen -R "$SERV" -X stuff " say Redemarrage du serveur pour Backup dans 2 minutes !$(printf "\r")"
 	done
 
 	sleep 120s
 
 	for SERV in "$@"
 	do
-		echo "Arret de $(SERV)."
-		screen -R "$(SERV)" -X stuff "say Redemarrage imminent. $(printf "\r")"
+		echo "Arret de $SERV."
+		screen -R "$SERV" -X stuff "say Redemarrage imminent. $(printf "\r")"
 		sleep 2s
-		screen -R "$(SERV)" -X stuff "stop $(printf "\r")"
+		screen -R "$SERV" -X stuff "stop $(printf "\r")"
 	done
 	
 	echo "On attends que les serveurs d'eteignent."
@@ -82,20 +82,20 @@ else
 
 	for SERV in "$@"
 	do
-		echo "Backup de $(SERV)."
-		if [ -d "$(backup_path)/$(SERV)" ];
+		echo "Backup de $SERV."
+		if [ -d "$backup_path/$SERV" ];
 		then
     		echo "Directory exists."
     	else
-		echo "$(backup_path)/$(SERV) doesent exist. Creating it ..."
-    		mkdir $(backup_path)/$(SERV)
+		echo "$backup_path/$SERV doesent exist. Creating it ..."
+    		mkdir $backup_path/$SERV
     	fi
 	
-	src = "$(server_path)/$(SERV)"
-	dest = "$(backup)/$(serv)/backup-$(date +%F\ -\ %Hh).tar.gz"
+	src = "$server_path/$SERV"
+	dest = "$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
 	
-	echo "backup de ($(src)) sur ($(dest))."
-    	tar -cvpzf "$(dest)" "$(src)"
+	echo "backup de ($src) sur ($dest)."
+    	tar -cvpzf "$dest" "$src"
     done
 
     sleep 30s
@@ -103,8 +103,8 @@ else
     for SERV in "$@"
     do
     	echo "Démarrage de $SERV."
-    	screen -R "$(SERV)" -X stuff "cd ~/minecraft/$(SERV)/ $(printf "\r")"
-    	screen -R "$(SERV)" -X stuff "./start.sh $(printf "\r")"
+    	screen -R "$SERV" -X stuff "cd ~/minecraft/$(SERV)/ $(printf "\r")"
+    	screen -R "$SERV" -X stuff "./start.sh $(printf "\r")"
     done
 
     echo "Serveurs en cours de démarrage ..."
