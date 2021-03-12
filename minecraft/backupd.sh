@@ -48,8 +48,6 @@ then
     	tar -cvpzf "$dest" "$src"
     	done
 
-    	sleep 30s
-
     	for SERV in `ls $server_path | grep ".mc"`
     	do
     		echo "Démarrage de $SERV."
