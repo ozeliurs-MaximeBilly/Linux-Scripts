@@ -36,29 +36,28 @@ then
 		echo "Backup de $SERV."
 		if [ -d "$backup_path/$SERV" ];
 		then
-    		echo "Directory exists."
-    	else
-    		echo "$backup_path/$SERV doesent exist. Creating it ..."
-		mkdir $backup_path/$SERV
-    	fi
-	src = "$server_path/$SERV"
-	dest = "$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
+    			echo "Directory exists."
+    		else
+    			echo "$backup_path/$SERV doesent exist. Creating it ..."
+			mkdir $backup_path/$SERV
+    		fi
+	src="$server_path/$SERV"
+	dest="$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
 	
 	echo "backup de ($src) sur ($dest)."
     	tar -cvpzf $dest $src
-    done
+    	done
 
-    sleep 30s
+    	sleep 30s
 
-    for SERV in `ls $server_path | grep ".mc"`
-    do
-    	echo "Démarrage de $SERV."
-    	screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
-    	screen -R "$SERV" -X stuff "./start.sh $(printf "\r")"
-    done
-
-    echo "Serveurs en cours de démarrage ..."
-
+    	for SERV in `ls $server_path | grep ".mc"`
+    	do
+    		echo "Démarrage de $SERV."
+    		screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
+    		screen -R "$SERV" -X stuff "./start.sh $(printf "\r")"
+    	done
+	
+    	echo "Serveurs en cours de démarrage ..."
 else
 	#PARTIE ARGUMENTS. DANS CETTE PARTIE LE BACKUP S4EFFECTUE SEULEMENT SUR LES SERVEURS SPECIFIES
 	for SERV in "$@"
@@ -85,28 +84,26 @@ else
 		echo "Backup de $SERV."
 		if [ -d "$backup_path/$SERV" ];
 		then
-    		echo "Directory exists."
-    	else
-		echo "$backup_path/$SERV doesent exist. Creating it ..."
-    		mkdir $backup_path/$SERV
-    	fi
+    			echo "Directory exists."
+    		else
+			echo "$backup_path/$SERV doesent exist. Creating it ..."
+    			mkdir $backup_path/$SERV
+    		fi
+		src="$server_path/$SERV"
+		dest="$backup/$SERV/backup-$(date +%F\ -\ %Hh).tar.gz"
 	
-	src="$server_path/$SERV"
-	dest="$backup/$serv/backup-$(date +%F\ -\ %Hh).tar.gz"
-	
-	echo "backup de ($src) sur ($dest)."
-    	tar -cvpzf "$dest" "$src"
-    done
+		echo "backup de ($src) sur ($dest)."
+    		tar -cvpzf "$dest" "$src"
+    	done
 
-    sleep 30s
 
-    for SERV in "$@"
-    do
-    	echo "Démarrage de $SERV."
-    	screen -R "$SERV" -X stuff "cd ~/minecraft/$(SERV)/ $(printf "\r")"
-    	screen -R "$SERV" -X stuff "./start.sh $(printf "\r")"
-    done
+    	for SERV in "$@"
+    	do
+    		echo "Démarrage de $SERV."
+    		screen -R "$SERV" -X stuff "cd ~/minecraft/$SERV/ $(printf "\r")"
+    		screen -R "$SERV" -X stuff "./start.sh $(printf "\r")"
+    	done
 
-    echo "Serveurs en cours de démarrage ..."
+    	echo "Serveurs en cours de démarrage ..."
 
 fi
