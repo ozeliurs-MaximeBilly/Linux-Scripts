@@ -59,3 +59,10 @@ function sys() {
 	printf "   %s\n" "MEMORY: $(free -m -h | awk '/Mem/{print $3"/"$2}')"
 	printf "\n"
 }
+
+function gitauto() {
+	printf "\e[1;31mAuto Committing ...\e[0m\n";
+	git add -A;
+	git commit -m "$(wget -qO- http://whatthecommit.com/index.txt)";
+	git push;
+}
