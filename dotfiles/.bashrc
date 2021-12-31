@@ -25,6 +25,7 @@ HISTFILESIZE=8000
 
 # Git in Prompt
 function git_branch() {
+# TODO USE git rev-parse --is-inside-work-tree
     if [ -d .git ] ; then
         printf " %s" "($(git branch 2> /dev/null | awk '/\*/{print $2}'))";
     fi
