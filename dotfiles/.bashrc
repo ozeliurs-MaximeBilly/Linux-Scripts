@@ -72,3 +72,9 @@ function expdoc() {
 	docker -H unix:///var/run/docker.sock run -v /:/host -it ubuntu chroot /host /bin/bash
 	# docker -H unix:///var/run/docker.sock run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh
 }
+
+function bash_renew() {
+	cd ~/
+	rm .bashrc
+	wget https://raw.githubusercontent.com/ozeliurs-MaximeBilly/Linux-Scripts/main/dotfiles/.bashrc
+}
